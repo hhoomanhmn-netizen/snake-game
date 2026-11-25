@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#163d2a">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<title>Green Snake Quest</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">🐍</span><div><b>GREEN SNAKE</b><small>QUEST</small></div></div>
+    <div class="stats">
+      <div class="stat"><span class="stat-icon">🏆</span><div><small>BEST</small><b id="best">0</b></div></div>
+      <div class="stat"><span class="stat-icon">🍎</span><div><small>APPLES</small><b id="wallet">0</b></div></div>
+      <div class="stat"><span class="stat-icon">🗺️</span><div><small>LEVEL</small><b id="levelLabel">1 / 100</b></div></div>
+    </div>
+    <button class="icon-btn" id="soundBtn" aria-label="Toggle sound">🔊</button>
+  </header>
+
+  <main class="layout">
+    <section class="game-column">
+      <div class="game-heading">
+        <div><span class="eyebrow" id="modeLabel">CLASSIC RUN</span><h1 id="levelTitle">The Meadow</h1></div>
+        <div class="run-score"><span>🍎</span><b id="runApples">0</b><small>THIS RUN</small></div>
+      </div>
+      <div class="board-shell">
+        <canvas id="game" width="600" height="600" aria-label="Snake game board"></canvas>
+        <div class="overlay" id="overlay">
+          <div class="overlay-card">
+            <div class="overlay-emoji" id="overlayEmoji">🐍</div>
+            <h2 id="overlayTitle">Ready to slither?</h2>
+            <p id="overlayText">Eat apples, grow longer, and conquer 100 levels.</p>
+            <button class="primary-btn" id="mainBtn">PLAY</button>
+          </div>
+        </div>
+      </div>
+      <div class="controls-row">
+        <div class="level-progress"><div class="progress-meta"><span id="progressText">LEVEL 1 PROGRESS</span><b id="progressCount">0 / 5</b></div><div class="progress-track"><div id="progressFill"></div></div></div>
+        <button class="secondary-btn" id="pauseBtn">Ⅱ PAUSE</button>
+        <button class="secondary-btn" id="restartBtn">↻ RESTART</button>
+      </div>
+      <div class="mobile-controls" aria-label="Touch controls">
+        <button data-dir="up">▲</button><div><button data-dir="left">◀</button><button data-dir="down">▼</button><button data-dir="right">▶</button></div>
+      </div>
+      <p class="hint">Use arrow keys / WASD or swipe. Don't hit yourself or the walls.</p>
+    </section>
+
+    <aside class="side-column">
+      <section class="panel boss-panel" id="bossPanel">
+        <div class="panel-title"><span>⚔️</span> BOSS ENCOUNTER <span class="tag" id="bossTag">LEVEL 10</span></div>
+        <div class="boss-portrait" id="bossPortrait">🐉</div>
+        <h3 id="bossName">The Thorn Dragon</h3>
+        <p id="bossDesc">A thorny guardian blocks your path.</p>
+        <div class="boss-health"><div class="health-label"><span>BOSS TARGET</span><b id="bossHealthText">5 apples</b></div><div class="health-track"><div id="bossHealthFill"></div></div></div>
+        <small class="boss-note" id="bossNote">Boss ability: Thorn walls</small>
+      </section>
+      <section class="panel map-panel">
+        <div class="panel-title">🧭 LEVEL MAP <span class="tag" id="mapTag">1 / 100</span></div>
+        <div class="map-grid" id="mapGrid"></div>
+        <p class="panel-foot">Every 10th level is a boss fight. Maps add new obstacles as you advance.</p>
+      </section>
+      <section class="panel shop-panel">
+        <div class="panel-title">🛒 SNAKE SHOP <span class="wallet-mini">🍎 <b id="shopWallet">0</b></span></div>
+        <div class="shop-items" id="shopItems"></div>
+        <p class="panel-foot">Apples you collect are saved as currency, even if you lose.</p>
+      </section>
+    </aside>
+  </main>
+  <footer>GREEN SNAKE QUEST <span>•</span> 100 LEVELS <span>•</span> BUILT FOR THE WEB</footer>
+</div>
+<script src="game.js"></script>
+</body>
+</html>
